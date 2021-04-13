@@ -1,0 +1,5 @@
+distancia = float(input())
+rendimiento = float(input())
+litro = float(input())
+costo = round((distancia/rendimiento)*litro,2)
+print(costo)
