@@ -37,3 +37,42 @@ print(total_carbohidratos,"[g] de carbohidratos")
 print(total_proteinas,"[g] de proteinas")
 print("dando un total de")
 print(total_calorias,"[calorias]")
+
+"""
+
+Los casos de prueba utilizados en este programa (sin contar el del enunciado) fueron:
+
+        || Caso 1 ||
+Nevarro Nummies consumidas (en unidades): 2
+Space Soup consumida (en [ml]): 500
+Carne de rana consumida (en [g]): 300
+Goru ha consumido:
+22.24 [g] de grasas
+33.05 [g] de carbohidratos
+68.9 [g] de proteinas
+dando un total de
+608 [calorias]
+
+        || Caso 2 ||
+Nevarro Nummies consumidas (en unidades): 0.5
+Space Soup consumida (en [ml]): 200
+Carne de rana consumida (en [g]): 50
+Goru ha consumido:
+8.12 [g] de grasas
+11.42 [g] de carbohidratos
+16.12 [g] de proteinas
+dando un total de
+183 [calorias]
+
+        || Caso 3 ||
+Nevarro Nummies consumidas (en unidades): 4
+Space Soup consumida (en [ml]): 1000
+Carne de rana consumida (en [g]): 400
+Goru ha consumido:
+43.89 [g] de grasas
+66.11 [g] de carbohidratos
+105.8 [g] de proteinas
+dando un total de
+1083 [calorias]
+
+"""
