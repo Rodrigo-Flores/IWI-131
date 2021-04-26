@@ -1,25 +1,43 @@
-nombre_sucursal = input()
-coordenadas = input()
+## Sucursales y acumulacciones
+san_joaco = 0 # SJ
+vitacumbia = 0 # VC
+dignidad = 0 # DG
 
-# Sucursales y acumulacciones
-san_joaco = 0
-vitacumbia = 0
-dignidad = 0
+## Sucursales y sus respectivas coordenadas
+# Coordenadas de Vitacumbia
+x_vitacumbia = 6
+y_vitacumbia = -3
 
-# Platos y total
+# Coordenadas de San joaco
+x_san_joaco = -1
+y_san_joaco = 5
+
+# Coordenadas de Dignidad
+x_dignidad = 0
+y_dignidad = 0
+
+## Platos y total
 carnivoro = 4000 # Plato 1
 vegetariano = 3000 # Plato 2
 vegano = 3500 # Plato 3
 total_pedido = 0
+total_recaudado = 0
 
-pedido = 0
-
+## Inicializando valores booleanos para las condiciones de los bucles de tipo "while"
+flag_menor = True
 flag_in = True
 flag_out = True
 
+## Loop principal
 while flag_out:
+    # Volvemos a su estado base las variables
+    flag_in = True
+    total_pedido = 0
+    flag_menor = True
+  
+    # Loop para elegir plato
     while flag_in:
-        pedido = input()
+        pedido = input("Ingrese numero del plato: ")
 
         if pedido == "1":
             total_pedido += carnivoro
@@ -35,19 +53,42 @@ while flag_out:
 
             print("Total del pedido $", total_pedido)
 
-        coordenada_x = input("Ingrese coordenada x cliente: ")
-        coordenada_y = input("Ingrese coordenada y cliente: ")
+    # Solicitando coordenada al cliente
+    coordenada_x = float(input("Ingrese coordenada x cliente: "))
+    coordenada_y = float(input("Ingrese coordenada y cliente: "))
 
-        if coordenada_x == 6 and coordenada_y == -3: # Vitacumbia
-            vitacumbia += 1
+    # Calculando distancia entre dos puntos del plano
+    distancia_cliente_a_VC = ((x_vitacumbia-coordenada_x)**2 + (y_vitacumbia-coordenada_y)**2)**1/2 # Vitacumbia
+    distancia_cliente_a_SJ = ((x_san_joaco-coordenada_x)**2 + (y_san_joaco-coordenada_y)**2)**1/2 # San Joaco
+    distancia_cliente_a_DG = ((x_dignidad-coordenada_x)**2 + (y_dignidad-coordenada_y)**2)**1/2 # Dignidad
+    
+    # Loop para ver la mejor ubucaion para realizar la entrega
+    while flag_menor:
+        # Vitacumbia es la mejor distancias hasta el cliente
+        if distancia_cliente_a_VC < distancia_cliente_a_SJ and distancia_cliente_a_VC < distancia_cliente_a_DG:
+            menor_distancia = distancia_cliente_a_VC # Eligiendo nueva menor distancia
+            vitacumbia += 1 # Sumando pedidos al contador del local
+            print("Su pedido sera entregado por Vitacumbia")
+            flag_menor = False
 
-        elif coordenada_x == -1 and coordenada_y == 5: # San Joaco
-            vitacumbia += 1
+        # San Joaco es la mejor distancias hasta el cliente
+        elif distancia_cliente_a_SJ < distancia_cliente_a_VC and distancia_cliente_a_SJ < distancia_cliente_a_DG:
+            menor_distancia = distancia_cliente_a_SJ # Eligiendo nueva menor distancia
+            san_joaco += 1 # Sumando pedidos al contador del local
+            print("Su pedido sera entregado por San Joaco")
+            flag_menor = False
 
-        elif coordenada_x == 0 and coordenada_y == 0: # Dignidad
-            vitacumbia += 1
-        
+        # Dignidad es la mejor distancias hasta el cliente
+        elif distancia_cliente_a_DG < distancia_cliente_a_VC and distancia_cliente_a_DG < distancia_cliente_a_SJ:
+            menor_distancia = distancia_cliente_a_DG # Eligiendo nueva menor distancia
+            dignidad += 1 # Sumando pedidos al contador del local
+            print("Su pedido sera entregado por Dignidad")
+            flag_menor = False
+
+    total_recaudado += total_pedido
+
     continuar = input("¿Desea registrar otro pedido?: ")
+    print()
 
     if continuar == "si":
         pass
@@ -55,26 +96,11 @@ while flag_out:
     else:
         flag_out = False
 
+# Imprimiendo en pantalla los datos solicitados
 print("#####  Estadísticas Finales #####")
-print("Monto total recaudado $", total_pedido)
+print("Monto total recaudado $", total_recaudado)
 print("Vitacumbia entregó ", vitacumbia,"pedidos")
 print("San Joaco entregó ", san_joaco, "pedidos")
 print("Dignidad entrego", dignidad, "Pedidos")
 
-"""
-Nombre sucursal 1:  Vitacumbia
-Coordenada x:   6
-Coordenada y:   -3
-
-Nombre sucursal 2:  San Joaco
-Coordenada x:   -1
-Coordenada y:   5
-
-Nombre sucursal 3:  Dignidad
-Coordenada x:   0
-Coordenada y:   0
-
-"""
-    
-        
-
+# Fin del programa
