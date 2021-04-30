@@ -17,22 +17,27 @@ Recomendacion (1):
 """
 
 ## Sucursales y acumulacciones
-san_joaco = 0 # SJ
-vitacumbia = 0 # VC
-dignidad = 0 # DG
+sucursal_1 = 0 # S1
+sucursal_2 = 0 # S2
+sucursal_3 = 0 # S3S
 
 ## Sucursales y sus respectivas coordenadas
-# Coordenadas de Vitacumbia
-x_vitacumbia = 6
-y_vitacumbia = -3
+# Coordenadas nombre de sucursal_2
+nombre_sucursal_1 = input("Nombre sucursal 1: ")
+x_sucursal_1 = int(input("Coordenada x: "))
+y_sucursal_1 = int(input("Coordenada y: "))
 
-# Coordenadas de San joaco
-x_san_joaco = -1
-y_san_joaco = 5
+# Coordenadas y nombre de sucursal 2
+nombre_sucursal_2 = input("Nombre sucursal 2: ")
+x_sucursal_2 = int(input("Coordenada x: "))
+y_sucursal_2 = int(input("Coordenada y: "))
 
-# Coordenadas de Dignidad
-x_dignidad = 0
-y_dignidad = 0
+# Coordenadas y nombre de sucursal 3
+nombre_sucursal_3 = input("Nombre sucursal 3: ")
+x_sucursal_3 = int(input("Coordenada x: "))
+y_sucursal_3 = int(input("Coordenada y: "))
+
+print() # Salto de linea
 
 ## Platos y totales
 carnivoro = 4000 # Plato 1
@@ -76,37 +81,37 @@ while flag_out:
     coordenada_y = float(input("Ingrese coordenada y cliente: "))
 
     # Calculando distancia entre dos puntos del plano
-    distancia_cliente_a_VC = ((x_vitacumbia-coordenada_x)**2 + (y_vitacumbia-coordenada_y)**2)**1/2 # Vitacumbia
-    distancia_cliente_a_SJ = ((x_san_joaco-coordenada_x)**2 + (y_san_joaco-coordenada_y)**2)**1/2 # San Joaco
-    distancia_cliente_a_DG = ((x_dignidad-coordenada_x)**2 + (y_dignidad-coordenada_y)**2)**1/2 # Dignidad
+    distancia_cliente_a_S1 = ((x_sucursal_1-coordenada_x)**2 + (y_sucursal_1-coordenada_y)**2)**1/2 # Sucursal 1
+    distancia_cliente_a_S2 = ((x_sucursal_2-coordenada_x)**2 + (y_sucursal_2-coordenada_y)**2)**1/2 # Sucursal 2
+    distancia_cliente_a_S3 = ((x_sucursal_3-coordenada_x)**2 + (y_sucursal_3-coordenada_y)**2)**1/2 # Sucursal 3
     
     # Loop para ver la mejor ubicacion para realizar la entrega
     while flag_menor:
-        # Vitacumbia es la mejor distancias hasta el cliente
-        if distancia_cliente_a_VC < distancia_cliente_a_SJ and distancia_cliente_a_VC < distancia_cliente_a_DG: # Evaluando menor distancia
-            menor_distancia = distancia_cliente_a_VC # Eligiendo nueva menor distancia
-            vitacumbia += 1 # Sumando pedidos al contador del local
-            print("Su pedido sera entregado por Vitacumbia")
+        # Sucursal 1 es la mejor distancias hasta el cliente
+        if distancia_cliente_a_S1 < distancia_cliente_a_S2 and distancia_cliente_a_S1 < distancia_cliente_a_S3: # Evaluando menor distancia
+            menor_distancia = distancia_cliente_a_S1 # Eligiendo nueva menor distancia
+            sucursal_1 += 1 # Sumando pedidos al contador del local
+            print("Su pedido sera entregado por", nombre_sucursal_1)
             flag_menor = False # Cerrando el bucle con flag_menor como False
 
-        # San Joaco es la mejor distancias hasta el cliente
-        elif distancia_cliente_a_SJ < distancia_cliente_a_VC and distancia_cliente_a_SJ < distancia_cliente_a_DG: # Evaluando menor distancia
-            menor_distancia = distancia_cliente_a_SJ # Eligiendo nueva menor distancia
-            san_joaco += 1 # Sumando pedidos al contador del local
-            print("Su pedido sera entregado por San Joaco")
+        # Sucursal 2 es la mejor distancias hasta el cliente
+        elif distancia_cliente_a_S2 < distancia_cliente_a_S1 and distancia_cliente_a_S2 < distancia_cliente_a_S3: # Evaluando menor distancia
+            menor_distancia = distancia_cliente_a_S2 # Eligiendo nueva menor distancia
+            sucursal_2 += 1 # Sumando pedidos al contador del local
+            print("Su pedido sera entregado por", nombre_sucursal_2)
             flag_menor = False # Cerrando el bucle con flag_menor como False
 
-        # Dignidad es la mejor distancias hasta el cliente
-        elif distancia_cliente_a_DG < distancia_cliente_a_VC and distancia_cliente_a_DG < distancia_cliente_a_SJ: # Evaluando menor distancia
-            menor_distancia = distancia_cliente_a_DG # Eligiendo nueva menor distancia
-            dignidad += 1 # Sumando pedidos al contador del local
-            print("Su pedido sera entregado por Dignidad")
+        # Sucursal 3 es la mejor distancias hasta el cliente
+        elif distancia_cliente_a_S3 < distancia_cliente_a_S1 and distancia_cliente_a_S3 < distancia_cliente_a_S2: # Evaluando menor distancia
+            menor_distancia = distancia_cliente_a_S3 # Eligiendo nueva menor distancia
+            sucursal_3 += 1 # Sumando pedidos al contador del local
+            print("Su pedido sera entregado por", nombre_sucursal_3)
             flag_menor = False # Cerrando el bucle con flag_menor como False
 
     total_recaudado += total_pedido
 
     continuar = input("¿Desea registrar otro pedido?: ")
-    print()
+    print() # Salto de linea
 
     if continuar == "si" or continuar == "SI" or continuar == "Si" or continuar == "sI":
         pass # Pasa sin realizar cambios que afecten a la continuidad del bucle
@@ -117,92 +122,134 @@ while flag_out:
 ## Imprimiendo en pantalla los datos solicitados
 print("#####  Estadísticas Finales #####") # Titulo
 print("Monto total recaudado $", total_recaudado) # Total de dinero
-print("Vitacumbia entregó ", vitacumbia,"pedidos") # Total Vitacumbia
-print("San Joaco entregó ", san_joaco, "pedidos") # Total San Joaco
-print("Dignidad entrego", dignidad, "Pedidos") # Total Dignidad
+print(nombre_sucursal_1,"entregó", sucursal_1,"pedidos") # Total sucursal_1
+print(nombre_sucursal_2,"entregó", sucursal_2,"pedidos") # Total sucursal_2
+print(nombre_sucursal_3,"entregó", sucursal_3,"pedidos") # Total sucursal_3
 
 ## Fin del programa
 
 """
 @CASOS DE PRUEBA
 
- # -- Caso : -- #
+# -- Caso 1 -- #
+Nombre sucursal 1: Tera
+Coordenada x: 1
+Coordenada y: -6
+Nombre sucursal 2: Giga
+Coordenada x: 8
+Coordenada y: 0
+Nombre sucursal 3: Peta
+Coordenada x: 5
+Coordenada y: -5
+
 Ingrese numero del plato: 1
-Ingrese numero del plato: 2
-Ingrese numero del plato: 3
+Ingrese numero del plato: 1
+Ingrese numero del plato: 1
+Ingrese numero del plato: 1
+Ingrese numero del plato: 1
 Ingrese numero del plato: -1
-Total del pedido $ 10500
+Total del pedido $ 20000
 Ingrese coordenada x cliente: 5
 Ingrese coordenada y cliente: 5
-Su pedido sera entregado por San Joaco
+Su pedido sera entregado por Giga
 ¿Desea registrar otro pedido?: si
 
-Ingrese numero del plato: 1
+Ingrese numero del plato: 2
+Ingrese numero del plato: 2
+Ingrese numero del plato: 2
 Ingrese numero del plato: -1
-Total del pedido $ 4000
-Ingrese coordenada x cliente: 5
-Ingrese coordenada y cliente: 5
-Su pedido sera entregado por San Joaco
-¿Desea registrar otro pedido?: no
-
-#####  Estadísticas Finales #####
-Monto total recaudado $ 14500
-Vitacumbia entregó  0 pedidos
-San Joaco entregó  2 pedidos
-Dignidad entrego 0 Pedidos
-
-# -- Caso 2 -- #
-Ingrese numero del plato: 2
-Ingrese numero del plato: 3
-Ingrese numero del plato: -1
-Total del pedido $ 6500
-Ingrese coordenada x cliente: 6
-Ingrese coordenada y cliente: -6
-Su pedido sera entregado por Vitacumbia
-¿Desea registrar otro pedido?: no
-
-#####  Estadísticas Finales #####
-Monto total recaudado $ 6500
-Vitacumbia entregó  1 pedidos
-San Joaco entregó  0 pedidos
-Dignidad entrego 0 Pedidos
-
-# -- Caso 2 -- #
-Ingrese numero del plato: 1
-Ingrese numero del plato: 1
-Ingrese numero del plato: 1
-Ingrese numero del plato: 2
-Ingrese numero del plato: 2
-Ingrese numero del plato: 2
-Ingrese numero del plato: 3
-Ingrese numero del plato: 3
-Ingrese numero del plato: 3
-Ingrese numero del plato: -1
-Total del pedido $ 31500
-Ingrese coordenada x cliente: 4
+Total del pedido $ 9000
+Ingrese coordenada x cliente: 3
 Ingrese coordenada y cliente: -3
-Su pedido sera entregado por Vitacumbia
+Su pedido sera entregado por Peta
+¿Desea registrar otro pedido?: no
+
+#####  Estadísticas Finales #####
+Monto total recaudado $ 29000
+Tera entregó 0 pedidos
+Giga entregó 1 pedidos
+Peta entregó 1 pedidos
+
+# -- Caso 2 -- #
+Nombre sucursal 1: Nano
+Coordenada x: 1
+Coordenada y: 1
+Nombre sucursal 2: Micro 
+Coordenada x: -1
+Coordenada y: 5
+Nombre sucursal 3: Pico
+Coordenada x: 4
+Coordenada y: -6
+
+Ingrese numero del plato: 3
+Ingrese numero del plato: 3
+Ingrese numero del plato: 3
+Ingrese numero del plato: 3
+Ingrese numero del plato: 1
+Ingrese numero del plato: -1
+Total del pedido $ 18000
+Ingrese coordenada x cliente: 2
+Ingrese coordenada y cliente: -9
+Su pedido sera entregado por Pico
 ¿Desea registrar otro pedido?: si
 
 Ingrese numero del plato: 1
 Ingrese numero del plato: -1
 Total del pedido $ 4000
-Ingrese coordenada x cliente: 2
-Ingrese coordenada y cliente: -2
-Su pedido sera entregado por Dignidad
-¿Desea registrar otro pedido?: si
-
-Ingrese numero del plato: 3
-Ingrese numero del plato: -1
-Total del pedido $ 3500
-Ingrese coordenada x cliente: 4
-Ingrese coordenada y cliente: -6
-Su pedido sera entregado por Vitacumbia
+Ingrese coordenada x cliente: 0
+Ingrese coordenada y cliente: 0
+Su pedido sera entregado por Nano
 ¿Desea registrar otro pedido?: no
 
 #####  Estadísticas Finales #####
-Monto total recaudado $ 39000
-Vitacumbia entregó  2 pedidos
-San Joaco entregó  0 pedidos
-Dignidad entrego 1 Pedidos
+Monto total recaudado $ 22000
+Nano entregó 1 pedidos
+Micro entregó 0 pedidos
+Pico entregó 1 pedidos
+
+# -- Caso 3 -- #
+Nombre sucursal 1: Sol   
+Coordenada x: 0
+Coordenada y: 0
+Nombre sucursal 2: Betelgeuse
+Coordenada x: 10
+Coordenada y: -1
+Nombre sucursal 3: Sagitario A
+Coordenada x: -10 
+Coordenada y: -20
+
+Ingrese numero del plato: 1
+Ingrese numero del plato: -1
+Total del pedido $ 4000
+Ingrese coordenada x cliente: -10
+Ingrese coordenada y cliente: -10
+Su pedido sera entregado por Sagitario A
+¿Desea registrar otro pedido?: si
+
+Ingrese numero del plato: 2
+Ingrese numero del plato: 1
+Ingrese numero del plato: 1
+Ingrese numero del plato: -1
+Total del pedido $ 11000
+Ingrese coordenada x cliente: 1
+Ingrese coordenada y cliente: 1
+Su pedido sera entregado por Sol
+¿Desea registrar otro pedido?: si
+
+Ingrese numero del plato: 2
+Ingrese numero del plato: 2
+Ingrese numero del plato: 2
+Ingrese numero del plato: -1
+Total del pedido $ 9000
+Ingrese coordenada x cliente: 15
+Ingrese coordenada y cliente: -5
+Su pedido sera entregado por Betelgeuse
+¿Desea registrar otro pedido?: no
+
+#####  Estadísticas Finales #####
+Monto total recaudado $ 24000
+Sol entregó 1 pedidos
+Betelgeuse entregó 1 pedidos
+Sagitario A entregó 1 pedidos
+
 """
