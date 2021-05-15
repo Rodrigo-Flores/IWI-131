@@ -62,7 +62,7 @@ while True:
     elif (total_dinero < precio) and (total_dinero > 0):
         print('NO TIENE DINERO SUFICIENTE')
 
-    elif total_dinero < 1400:
+    elif total_dinero < 910:
         print('Ya no puede comprar más tickets. Le sobraron', total_dinero)
         break
         
