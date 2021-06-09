@@ -32,6 +32,25 @@ def disparo(tablero, barcos, fila, columna):
     if fire == 0:
         tablero[fila][columna] = ' '
 
+def score(tablero, barcos):
+    final = 0
+    for barco in barcos: # Seleccionamos un barco
+        c = 0
+        for n in range(barco[0]):
+            if barco[1] == 2: # Caso horizontal
+                if tablero[barco[2]][barco[3]+n] == 'X':
+                    c+=1
+
+            elif barco[1] == 1: # Caso vertical
+                if tablero[barco[2]+n][barco[3]] == 'X':
+                    c+=1
+
+        if c == barco[0]:
+            final+=1
+
+    return final
+                    
+
 def destruidos(tablero, barcos):
     destruido = 0
     for barco in barcos: # Seleccionamos un barco
@@ -47,8 +66,15 @@ def destruidos(tablero, barcos):
 
         if count == barco[0]: # Si y solo si los disparos acertados corresponden al largo del barco se destruye
             destruido+=1
+            for destroy in range(barco[0]):
+                if barco[1] == 2: # Caso horizontal
+                    tablero[barco[2]][barco[3]+destroy] = 'X'
 
-    return destruido
+                if barco[1] == 1: # Caso vertical
+                    tablero[barco[2]+destroy][barco[3]] = 'X'
+
+                
+    return score(tablero, barcos)
 
 mostrar_solucion = 1 # Para mostrar barcos en el tablero
 
