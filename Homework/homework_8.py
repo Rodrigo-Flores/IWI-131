@@ -1,15 +1,4 @@
-personas = [
-   ('Edsger Dijkstra', (1930, 5, 11), 'Holanda'),
-   ('Alan Turing', (1912, 6, 23), 'Inglaterra'),
-   ('Alonzo Church', (1903, 6, 14), 'Estados Unidos'),
-   ('Stephen Cook', (1939, 12, 14), 'Estados Unidos'),
-   ('Guido van Rossum', (1956, 1, 31), 'Holanda'),
-   ('Tony Hoare', (1934, 1, 11), 'Inglaterra'),
-   ('Grace Hopper', (1906, 12, 9), 'Estados Unidos'),
-   ('Charles Babbage', (1791, 12, 26), 'Inglaterra'),
-   ('Donald Knuth', (1938, 1, 10), 'Estados Unidos')
-]
-
+# Lista de amigos
 amigos = [('Mojojojo',('mechero','kawaii','furro','lolero')),
 ('Otaku-taku',('otaku','avaro','lolero','leal')),
 ('Maiga',('paciente','otaku','leal')),
@@ -20,49 +9,51 @@ amigos = [('Mojojojo',('mechero','kawaii','furro','lolero')),
 ('Grogu',('avaro','kawaii','lolero','otaku')),
 ('Freezer',('acusete','furro','otaku','lolero'))]
 
+# Listas de caracteristicas
 características = [('kawaii',10),('leal',20),('acusete',-10),
                    ('avaro',-15),('respetuoso',20),('otaku',25),
                    ('lolero',25),('furro',-50),('vtuver',25),
                    ('mechero',-30)]
 
+
 def obtener_valor_característica(características, buscada):
    for object in características:
-      if object[0] == buscada:
-         return object[1]
+      if object[0] == buscada: # Encontramos la caracteristica buscada
+         return object[1] # Retornamos el valor de dicha caracteristica
 
-   return 0
+   return 0 # Si no la encontramos retornamos 0
 
 # print(obtener_valor_característica(características, "vtuver"))
 # print(obtener_valor_característica(características, "puntual"))
 
 def puntaje_amigo(amigo, características):
-   points = 0
-   for feature in amigo[1]:
-      points+=obtener_valor_característica(características, feature)
+   points = 0 # Acumulador de puntos
+   for feature in amigo[1]: 
+      points+=obtener_valor_característica(características, feature) # Se le suma el valor de cada caracteristica
 
-   return points
+   return points # Retornamos los puntos totales
 
 # print(puntaje_amigo(('Vegeta',('otaku','avaro')),características))
 
-def lolero(amigo):
-   if 'lolero' in amigo[1]:
-      return True
+def lolero(amigo): # Funcion para verificar que el amigo es lolero
+   if 'lolero' in amigo[1]: # Si lolero es una de sus caracteristicas
+      return True # Retornamos True
 
-   return False
+   return False # Si no, se retorna False
 
 scores = []
 for friend in amigos:
-   if lolero(friend):
-      temp_score = puntaje_amigo(friend, características)
-      scores.append([temp_score, friend[0]])
+   if lolero(friend): # Si es lolero
+      temp_score = puntaje_amigo(friend, características) # Se obtiene el puntaje del amigo
+      scores.append([temp_score, friend[0]]) # Se añade el puntaje y el nombre del amigo
 
-scores.sort()
-scores.reverse()
+scores.sort() # Ordenamos la lista de manor a mayor
+scores.reverse() # revertimos el orden, para que los dos mayores queden al principio. Posiciones 0 y 1 en la lista
 
 print(
    'Equipo seleccionado:',
    '\n' +
-   str(scores[0][1]), str(scores[0][0]),
+   str(scores[0][1]), str(scores[0][0]), # Primer puntjae mas alto
    '\n' +
-   str(scores[1][1]), str(scores[1][0])
+   str(scores[1][1]), str(scores[1][0]) # Segundo puntaje mas alto
 )
