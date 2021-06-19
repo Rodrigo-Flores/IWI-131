@@ -1,3 +1,18 @@
+"""
+
+Autor: Rodrigo Flores
+Carrera: Ingenieria Civil Informatica
+Curso: IWI131
+
+Observacion (1):
+    Este codigo no posee, en lo posible, ninguna tilde ni caracter fuera del alfabeto anglosajon.
+    Asi se evitan errores innecesarios.
+
+Recomendacion (1):
+    Ejecutar desde una terminal.
+    
+"""
+
 # Lista de amigos
 amigos = [('Mojojojo',('mechero','kawaii','furro','lolero')),
 ('Otaku-taku',('otaku','avaro','lolero','leal')),
@@ -53,7 +68,7 @@ scores.reverse() # revertimos el orden, para que los dos mayores queden al princ
 print(
    'Equipo seleccionado:',
    '\n' +
-   str(scores[0][1]), str(scores[0][0]), # Primer puntjae mas alto
+   str(scores[0][1]) + ', ' + str(scores[0][0]) + ' puntos', # Primer puntjae mas alto
    '\n' +
-   str(scores[1][1]), str(scores[1][0]) # Segundo puntaje mas alto
+   str(scores[1][1]) + ', ' + str(scores[1][0]) + ' puntos' # Segundo puntaje mas alto
 )
