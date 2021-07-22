@@ -14,9 +14,6 @@ Recomendacion (1):
 
 """
 
-from os import execl
-
-
 def avistamientos_por_región(nombre_archivo):
     recuento_regiones_porcentaje = {}
     i = 0 # Este contado nos permite ignorar la primera linea del texto, pues según el formato del enunciado ésta es solo el encabezado
