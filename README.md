@@ -1,7 +1,7 @@
 # Programming-USM
 
-## Propuse
-This repository correspond to first semester of the course IWI-131 at Universidad Ténica Federico Santa María.
+## Purpose
+This repository correspond to first semester of the course IWI-131 at Universidad Ténica Federico Santa María. Dictated in 2021.
 
 ## How to download
 
